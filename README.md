@@ -1,13 +1,7 @@
-# Angular A
+# swapiQuiz
 
-Simple boilerplate in Angular 1.
+A simple quiz app from the Star Wars API
 
 ## Features
 
-* Angular 1
 * Express
-* Sass
-
-## App Development
-
-* Running *gulp watch* in the terminal provides a local server at port 3000 as well as watch tasks that compile SCSS to CSS and browser refresh when HTML files in the public folder change

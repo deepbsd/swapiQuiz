@@ -1,0 +1,55 @@
+Characters:
+
+Where was [] born?
+What is the color of []'s eyes?
+What was the first movie where we meet []?
+What is []'s homeworld?
+
+
+Planets:
+
+What is the climate of []?
+what is the gravity of []?
+what is the population of []?
+what is the terrain of []?
+What is the orbital period of []?
+
+
+Films: 
+
+What is the the episode id for this movie?
+What is the opening crawl for this movie?
+What is the title for this movie?
+What was the release date for this movie?
+
+
+Species:
+
+Is this species sentient?
+What is the average lifespan for this species?
+What is the homeworld for this species?
+What is the language for this species?
+
+
+Vehicles:
+
+What is the crew size for this vehicle?
+Who manufactures this vehicle?
+How much does this vehicle cost in credits?
+What is the cargo capacity of this vehicle?
+
+
+Starships:
+
+Who manufactures this starship?
+What is the cost in credits of this starship?
+what is the crew size?
+How many passengers does this starship carry?
+What is the max speed for this starship?
+
+People (characters):  87
+Planets:  61
+Films:  7
+Species: 37
+Vehicles:  39
+Starships:  37

@@ -1,7 +1,7 @@
 {
-  "name": "angular-a",
+  "name": "swapiQuiz",
   "version": "1.0.0",
-  "description": "Simple boilerplate in Angular 1.",
+  "description": "Simple quiz App using the Swapi API",
   "main": "index.js",
   "scripts": {
     "start": "server.js",
@@ -9,21 +9,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samuraijane/angular-a.git"
+    "url": "git+https://github.com/deepbsd/swapiQuiz"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samuraijane/angular-a/issues"
+    "url": "https://github.com/deepbsd/swapiQuiz/issues"
   },
-  "homepage": "https://github.com/samuraijane/angular-a#readme",
+  "homepage": "https://github.com/deepbsd/swapiQuiz",
   "devDependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.2.1",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "swapi-node": "^0.3.0"
   }
 }
