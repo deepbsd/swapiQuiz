@@ -6,6 +6,9 @@ var express = require('express'),
     swapi = 'http://swapi.co/api/people/?page=',
     PORT = process.env.PORT || 3000;
 
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -76,6 +79,7 @@ getData(1);
 // }).catch(function (err) {
 //   console.log('error: ', err);
 // });
+
 
 
 app.listen(PORT, function() {
