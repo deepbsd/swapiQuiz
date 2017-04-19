@@ -17,13 +17,15 @@ function getData(page, arr){
   swapiModule.getPeople(page, function(data){
     data.results.forEach(function(character){
       arr.push(character);
+      console.log("Name: ", character.name);
     });
+    if (data.next) { getData(page+1, arr); }
   });
   //console.log(arr);
   return arr;
 }
 
-getData(5, allCharacters);
+getData(1, allCharacters);
 
 
 console.log('allCharacters: ', allCharacters);
