@@ -1,16 +1,8 @@
-
-//call jquery and setup page; import the swapiPeople object.
+// Set up the array for all characters; populated it from the swapi site
 
 var allCharacters = [];
 
-
 // swapiModule is from https://github.com/cfjedimaster/SWAPI-Wrapper
-swapiModule.getPeople(function(data){
-  console.log("Big Object: ", data);
-  data.results.forEach(function(character){
-    console.log("Name: ",character.name, "Species: ",character.species);
-  })
-});
 
 
 function getData(page, arr){
@@ -20,12 +12,24 @@ function getData(page, arr){
       console.log("Name: ", character.name);
     });
     if (data.next) { getData(page+1, arr); }
-  });
-  //console.log(arr);
+  })
   return arr;
 }
 
-getData(1, allCharacters);
+new Promise(function(resolve, reject) {
+  var myCharacters = getData(1, allCharacters);
+  myCharacters = resolve;
+  var err_msg = reject;
+})
+.then(function(payload){
+  console.log("Payload is a: ",typeof payload);
+  console.log("HERE'S THE NAME: ", payload[83].name);
+})
+.catch(function(err){
+  console.error("Error: ", err);
+})
 
 
-console.log('allCharacters: ', allCharacters);
+// setTimeout( function() {
+//   console.log(allCharacters[83].name);
+// },  4000);
