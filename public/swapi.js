@@ -17,13 +17,13 @@ var swapiModule = function () {
       oReq = new XDomainRequest();
       oReq.open('get', url, true);
 
-      // Update the timeout to 30 seconds for XDomainRequests. 
+      // Update the timeout to 30 seconds for XDomainRequests.
       oReq.timeout = 30000;
     } else {
       oReq = new XMLHttpRequest();
       oReq.open('get', url, true);
-      oReq.setRequestHeader('User-Agent', 'swapi-javascript');
-      oReq.setRequestHeader('Accept', 'application/json');
+      //oReq.setRequestHeader('User-Agent', 'swapi-javascript');
+      //oReq.setRequestHeader('Accept', 'application/json');
     }
     oReq.onload = listener;
 
