@@ -70,7 +70,8 @@ function generateWhoQuestion(obj){
     console.log('No Duplicates!!!!');
   } else {
     console.log('There be Duplicates!!!!');
-    generateWhoQuestion(obj);
+    // NEED TO CREATE A REMOVE_DUPES() function here...
+    //generateWhoQuestion(obj);
   }
 
   console.log('before shuffle...');
