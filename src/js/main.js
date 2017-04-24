@@ -23,7 +23,7 @@ function getAllPeople (page) {
     }
     getPeoplePage(page);
   })
-}
+}  // end of getAllPeople()
 
 
 
@@ -40,11 +40,77 @@ getAllPeople(1)
           data[k]["img_url"] = images[k];
       }
     }
+    // testing testing...
     console.log(data);
     console.log(images);
-    console.log('Whose url is this? Name: ', data["BB8"].name, ' URL: ',data["BB8"].img_url);
+    //console.log(`Who is this?  Name: ${data["BB8"].name}  Image URL: ${data["BB8"].img_url}`);
+    return data;
+
+  }) //Yep the data gets into the next promise just fine...
+  .then(function(data) {
+    generateWhoQuestion(data);
+    //console.log(`Who is ${data[char].name}? Image: ${data[char].img_url}`);
   })
 
+function generateWhoQuestion(obj){
+  // assign the answer and the alternatives...
+  let char = fetchRandomCharacter(obj);
+  let answer = char;
+  let false1 = fetchRandomCharacter(obj);
+  let false2 = fetchRandomCharacter(obj);
+  let false3 = fetchRandomCharacter(obj);
+  let false4 = fetchRandomCharacter(obj);
+  let choices = [false1, false2, false3, false4];
+
+  // push the right answer onto the array of answers
+  choices.push(char);
+
+  // make sure no duplicates exist in the answer array
+  if (noDupes(choices)){
+    console.log('No Duplicates!!!!');
+  } else {
+    console.log('There be Duplicates!!!!');
+    generateWhoQuestion(obj);
+  }
+
+  console.log('before shuffle...');
+  console.log(`${choices}`);
+
+  // Shuffle the array sequence to the same anwer doesn't
+  // always appear in the same spot...
+  shuffleArray(choices);
+  console.log('after shuffle...');
+
+  // Here's the questions, followed the an array of possible answers...
+  console.log(`Who is this: ${obj[char].img_url}?`);
+  console.log(`${choices}`);
+}  // end of generateWhoQuestion()
+
+function noDupes(arr){
+  let unique = [...new Set(arr)];
+  if (unique.length !== arr.length){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
+function shuffleArray(arr){
+  for (let i = arr.length; i; i--){
+    let j = Math.floor(Math.random() * i);
+    [arr[i-1], arr[j]] = [arr[j], arr[i-1]];
+  }
+  return arr;
+}
+
+function fetchRandomCharacter(obj) {
+  var keys = [];
+  for (key in obj) {
+    keys.push(key);
+  }
+  return keys[Math.floor(Math.random() * keys.length)];
+}
 
 
 
