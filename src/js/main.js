@@ -41,30 +41,31 @@ getAllPeople(1)
       }
     }
     // testing testing...
-    console.log(data);
-    console.log(images);
+    // console.log(data);
+    // console.log(images);
 
     return data;
 
   }) //Yep the data gets into the next promise just fine...
   .then(function(data) {
-    for (num=0; num<5; num++){
+    var maxQuestions = 5;
+    for (num=0; num<maxQuestions; num++){
       generateWhoQuestion(data);
     }
   })
 
 function generateWhoQuestion(obj){
   // assign the answer and the alternatives...
-  let char = fetchRandomCharacter(obj);
-  let answer = char;
+  let char =  { name: fetchRandomCharacter(obj),
+                answer: true }
   let false1 = fetchRandomCharacter(obj);
   let false2 = fetchRandomCharacter(obj);
   let false3 = fetchRandomCharacter(obj);
   let false4 = fetchRandomCharacter(obj);
-  let choices = [false1, false2, false3, false4];
+  let choices = [false1, false2, false3, false4, char.name ];
 
   // push the right answer onto the array of answers
-  choices.push(char);
+  // choices.push(char);
 
   // make sure no duplicates exist in the answer array
   if (noDupes(choices)){
@@ -76,11 +77,28 @@ function generateWhoQuestion(obj){
 
   shuffleArray(choices);
 
+  renderQuestion(obj, char, choices);
 
   // Here're the questions, followed the an array of possible answers...
-  console.log(`Who is this: ${obj[char].img_url}?`);
-  console.log(`${choices}`);
+  // console.log(`Who is this: ${obj[char.name].img_url}?`);
+  // console.log(`${choices}`);
 }  // end of generateWhoQuestion()
+
+function renderQuestion(obj, char, choices){
+  let template = `<img src="${obj[char.name].img_url}"/><br> `
+  template += `<p class="questionText">Who is this?</p>`
+  template += `<form class="radioButtons" value="radio"> `
+  template += `<input type="radio" value="${choices[0]}" name="A">${choices[0]}</input>  `
+  template += `<input type="radio" value="${choices[1]}" name="B">${choices[1]}</input>  `
+  template += `<input type="radio" value="${choices[2]}" name="C">${choices[2]}</input>  `
+  template += `<input type="radio" value="${choices[3]}" name="D">${choices[3]}</input>  `
+  template += `<input type="radio" value="${choices[4]}" name="E">${choices[4]}</input><br>`
+  template += `<input type="submit" value="Submit"></input></form>`
+
+
+  $(".output").html(template);
+}
+
 
 
 function noDupes(arr){
