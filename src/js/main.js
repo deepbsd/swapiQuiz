@@ -43,13 +43,14 @@ getAllPeople(1)
     // testing testing...
     console.log(data);
     console.log(images);
-    //console.log(`Who is this?  Name: ${data["BB8"].name}  Image URL: ${data["BB8"].img_url}`);
+
     return data;
 
   }) //Yep the data gets into the next promise just fine...
   .then(function(data) {
-    generateWhoQuestion(data);
-    //console.log(`Who is ${data[char].name}? Image: ${data[char].img_url}`);
+    for (num=0; num<5; num++){
+      generateWhoQuestion(data);
+    }
   })
 
 function generateWhoQuestion(obj){
@@ -70,22 +71,17 @@ function generateWhoQuestion(obj){
     console.log('No Duplicates!!!!');
   } else {
     console.log('There be Duplicates!!!!');
-    // NEED TO CREATE A REMOVE_DUPES() function here...
-    //generateWhoQuestion(obj);
+    removeDupes(choices, obj);
   }
 
-  console.log('before shuffle...');
-  console.log(`${choices}`);
-
-  // Shuffle the array sequence to the same anwer doesn't
-  // always appear in the same spot...
   shuffleArray(choices);
-  console.log('after shuffle...');
 
-  // Here's the questions, followed the an array of possible answers...
+
+  // Here're the questions, followed the an array of possible answers...
   console.log(`Who is this: ${obj[char].img_url}?`);
   console.log(`${choices}`);
 }  // end of generateWhoQuestion()
+
 
 function noDupes(arr){
   let unique = [...new Set(arr)];
@@ -94,6 +90,41 @@ function noDupes(arr){
   } else {
     return true;
   }
+}
+
+
+function removeDupes(arr, obj){
+  if ( arr[0] === arr[1] ) {
+    arr[0] = fetchRandomCharacter(obj);
+  }
+  if ( arr[0] === arr[2] ) {
+    arr[0] = fetchRandomCharacter(obj);
+  }
+  if (arr[0] === arr[3] ) {
+    arr[0] = fetchRandomCharacter(obj);
+  }
+  if (arr[0] === arr[4] ) {
+      arr[0] = fetchRandomCharacter(obj);
+  }
+  if (arr[1] === arr[2] ) {
+    arr[1] = fetchRandomCharacter(obj);
+  }
+  if (arr[1] === arr[3] ) {
+    arr[1] = fetchRandomCharacter(obj);
+  }
+  if (arr[1] === arr[4] ) {
+    arr[1] = fetchRandomCharacter(obj);
+  }
+  if (arr[2] === arr[3] ) {
+    arr[2] = fetchRandomCharacter(obj);
+  }
+  if (arr[2] === arr[4] ) {
+    arr[2] = fetchRandomCharacter(obj);
+  }
+  if ( arr[3] === arr[4] ) {
+    arr[3] = fetchRandomCharacter(obj)
+  }
+  return arr;
 }
 
 
@@ -112,42 +143,3 @@ function fetchRandomCharacter(obj) {
   }
   return keys[Math.floor(Math.random() * keys.length)];
 }
-
-
-
-// Set up the array for all characters; populated it from the swapi site
-
-//var allCharacters = [];
-
-// swapiModule is from https://github.com/cfjedimaster/SWAPI-Wrapper
-
-// function getData(page, arr){
-//   swapiModule.getPeople(page, function(data){
-//     data.results.forEach(function(character){
-//       arr.push(character);
-//       console.log("Name: ", character.name);
-//     });
-//     if (data.next) { getData(page+1, arr); }
-//   })
-//   return arr;
-// }
-
-// function getData(page, arr){
-//   return new Promise(function(resolve){
-//     swapiModule.getPeople(page, function(data){
-//       data.results.forEach(function(character){
-//         arr.push(character);
-//         console.log("Name: ", character.name);
-//       });
-//       if (data.next) { getData(page+1, arr); }
-//     })
-//     resolve(arr);
-//   })
-// }  // end of getData()
-
-
-// getData(1, allCharacters).then(function(array){ console.log("HERE: ",array[83].name)});
-
-// setTimeout( function() {
-//   console.log("Here: ",allCharacters[83].name);
-// },  3000);
