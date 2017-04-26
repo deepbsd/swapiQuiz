@@ -1,4 +1,10 @@
 // swapiModule is from https://github.com/cfjedimaster/SWAPI-Wrapper
+const state = {
+  currentPage: 'start',
+  currentQuestion: 0,
+  people: [],
+  scores: []
+};
 
 function getAllPeople (page) {
   var people = {}
@@ -40,24 +46,53 @@ getAllPeople(1)
           data[k]["img_url"] = images[k];
       }
     }
-    // testing testing...
-    // console.log(data);
-    // console.log(images);
 
-    return data;
+    // Add People to the overall object
+    state.people = data;
+    // testing testing...
+    console.log('state.people: ',state.people);
+
+    return state.people;
 
   }) //Yep the data gets into the next promise just fine...
-  .then(function(data) {
-    var maxQuestions = 5;
-    for (num=0; num<maxQuestions; num++){
-      generateWhoQuestion(data);
-    }
+  // .then(function(data) {
+  //   var maxQuestions = 5;
+  //   for (num=0; num<maxQuestions; num++){
+  //     generateWhoQuestion(data);
+  //   }
+  // })
+  .then(function(state) {
+    console.log('state object: ',state);
+    renderIntro();
+    return state;
   })
 
+
+function renderIntro(){
+  var introTempl = "<h2 class='intro'>Welcome to the Star Wars Character Quiz!</h2> "
+  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human conditions after all these years?  Remind of yourself of some of these unforgettable characters and have fun with the quiz at the same time!</p><form id='js-quizz-start-form'><label for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
+
+    // console.log('this is state.people: ', state.people);
+
+  $(".output").html(introTempl);
+
+
+    $("#start-quiz").click(function(ev) {
+      ev.preventDefault();
+      var obj = state.people;
+
+      generateWhoQuestion(obj);
+    });
+
+}
+
+
+
 function generateWhoQuestion(obj){
+  console.log('inside generateWhoQuestion:  ',obj);
   // assign the answer and the alternatives...
   let char =  { name: fetchRandomCharacter(obj),
-                answer: true }
+                correct: true }
   let false1 = fetchRandomCharacter(obj);
   let false2 = fetchRandomCharacter(obj);
   let false3 = fetchRandomCharacter(obj);
@@ -80,8 +115,8 @@ function generateWhoQuestion(obj){
   renderQuestion(obj, char, choices);
 
   // Here're the questions, followed the an array of possible answers...
-  // console.log(`Who is this: ${obj[char.name].img_url}?`);
-  // console.log(`${choices}`);
+  //console.log(`Who is this: ${obj[char.name].img_url}?`);
+  //console.log(`${choices}`);
 }  // end of generateWhoQuestion()
 
 function renderQuestion(obj, char, choices){
@@ -97,8 +132,17 @@ function renderQuestion(obj, char, choices){
 
 
   $(".output").html(template);
-}
+}  //end of renderQuestion()
 
+
+
+function scoreQuestion(choice){
+  if (choice.correct) {
+    return true;
+  } else {
+    return false;
+  }
+}  // end or scoreQuestion()
 
 
 function noDupes(arr){
@@ -108,7 +152,7 @@ function noDupes(arr){
   } else {
     return true;
   }
-}
+}  // end of noDupes()
 
 
 function removeDupes(arr, obj){
@@ -143,7 +187,7 @@ function removeDupes(arr, obj){
     arr[3] = fetchRandomCharacter(obj)
   }
   return arr;
-}
+}  // end of removeDupes()
 
 
 function shuffleArray(arr){
@@ -152,7 +196,8 @@ function shuffleArray(arr){
     [arr[i-1], arr[j]] = [arr[j], arr[i-1]];
   }
   return arr;
-}
+}  // end of shuffleArray()
+
 
 function fetchRandomCharacter(obj) {
   var keys = [];
@@ -160,4 +205,8 @@ function fetchRandomCharacter(obj) {
     keys.push(key);
   }
   return keys[Math.floor(Math.random() * keys.length)];
-}
+}  // end of fetchRandomCharacter()
+
+
+// just for testing...
+console.log('at bottom: ',state);
