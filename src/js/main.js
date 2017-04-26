@@ -3,8 +3,15 @@ const state = {
   currentPage: 'start',
   currentQuestion: 0,
   people: [],
-  scores: []
+  scores: {
+    right: [],
+    wrong: []
+  },
 };
+
+const maxQuestions = 10;
+
+
 
 function getAllPeople (page) {
   var people = {}
@@ -54,13 +61,7 @@ getAllPeople(1)
 
     return state.people;
 
-  }) //Yep the data gets into the next promise just fine...
-  // .then(function(data) {
-  //   var maxQuestions = 5;
-  //   for (num=0; num<maxQuestions; num++){
-  //     generateWhoQuestion(data);
-  //   }
-  // })
+  })
   .then(function(state) {
     console.log('state object: ',state);
     renderIntro();
@@ -77,15 +78,14 @@ function renderIntro(){
   $(".output").html(introTempl);
 
 
-    $("#start-quiz").click(function(ev) {
+    $("#js-quizz-start-form").submit(function(ev) {
       ev.preventDefault();
-      var obj = state.people;
+      // var obj = state.people;
+      state.currentPage = 'question';
 
-      generateWhoQuestion(obj);
+      proceedQuiz();
     });
-
 }
-
 
 
 function generateWhoQuestion(obj){
@@ -122,27 +122,65 @@ function generateWhoQuestion(obj){
 function renderQuestion(obj, char, choices){
   let template = `<img src="${obj[char.name].img_url}"/><br> `
   template += `<p class="questionText">Who is this?</p>`
-  template += `<form class="radioButtons" value="radio"> `
-  template += `<input type="radio" value="${choices[0]}" name="A">${choices[0]}</input>  `
-  template += `<input type="radio" value="${choices[1]}" name="B">${choices[1]}</input>  `
-  template += `<input type="radio" value="${choices[2]}" name="C">${choices[2]}</input>  `
-  template += `<input type="radio" value="${choices[3]}" name="D">${choices[3]}</input>  `
-  template += `<input type="radio" value="${choices[4]}" name="E">${choices[4]}</input><br>`
+  template += `<form id="characterQuestion" class="radioButtons" value="radio"> `
+  template += `<input type="radio" value="${choices[0]}" name="character">${choices[0]}</input>  `
+  template += `<input type="radio" value="${choices[1]}" name="character">${choices[1]}</input>  `
+  template += `<input type="radio" value="${choices[2]}" name="character">${choices[2]}</input>  `
+  template += `<input type="radio" value="${choices[3]}" name="character">${choices[3]}</input>  `
+  template += `<input type="radio" value="${choices[4]}" name="character">${choices[4]}</input><br>`
   template += `<input type="submit" value="Submit"></input></form>`
 
 
   $(".output").html(template);
+
+  $("#characterQuestion").submit(function(ev) {
+    ev.preventDefault();
+    var choice = $("input:radio[name='character']:checked").val();
+
+
+    scoreQuestion(choice, char);
+
+
+    proceedQuiz();
+
+  });
 }  //end of renderQuestion()
 
 
 
-function scoreQuestion(choice){
-  if (choice.correct) {
-    return true;
+function scoreQuestion(choice, char){
+  var message;
+  if (choice === char.name) {
+    message = " You are right!";
+    state.scores.right.push(state.currentQuestion);
   } else {
-    return false;
+    message = " Sorry, no.  You are mistaken.";
+    state.scores.wrong.push(state.currentQuestion);
   }
+  console.log('You chose: ', choice, message);
 }  // end or scoreQuestion()
+
+
+
+function proceedQuiz(){
+  console.log('inside proceedQuiz');
+  if (state.currentQuestion < maxQuestions && state.currentPage === 'question') {
+    state.currentQuestion++;
+    console.log(`current Page: ${state.currentPage} and question number is: ${state.currentQuestion}.` )
+    generateWhoQuestion(state.people);
+  } else {
+    state.currentPage = 'final';
+    console.log('Final Page Reached!')
+    renderFinalPg();
+  }
+  console.log(`Your score is right: ${state.scores.right.length}  wrong: ${state.scores.wrong.length}.`)
+}
+
+
+
+function renderFinalPg(){
+  console.log('Final Page!')
+}
 
 
 function noDupes(arr){
