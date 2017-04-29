@@ -250,8 +250,10 @@ html {
   Body
 ----------------------------------------------------------------------------*/
 body {
+  background-image: url("/img/dangerous_planet.jpg");
+  background-color: black;
   font-family: "Arial", sans-serif;
-  color: #626262; }
+  color: white; }
 
 /*----------------------------------------------------------------------------
   Header Styles
@@ -260,8 +262,6 @@ header {
   /*min-width: 325px;*/
   padding: 20px 0;
   border-radius: 6px;
-  background-image: url("/img/deepspace.jpg");
-  background-color: black;
   text-align: center; }
 
 /*----------------------------------------------------------------------------
@@ -283,6 +283,11 @@ h3.header {
   font-family: cursive;
   font-style: italic; }
 
+h2.intro {
+  margin-top: 15px;
+  font-family: 'Exo', sans-serif;
+  font-size: 32px; }
+
 /*----------------------------------------------------------------------------
   HTML
 ----------------------------------------------------------------------------*/
@@ -294,10 +299,16 @@ html {
   FORM ELEMENTS
 ----------------------------------------------------------------------------*/
 form {
-  border: 1px solid black;
+  margin-top: 30px;
+  border: 1px solid yellow;
   border-radius: 8px;
   font-family: "Trebuchet MS";
-  font-size: 22px; }
+  font-size: 22px;
+  text-align: center; }
+
+#js-quiz-start-form #start-quiz {
+  margin-top: 30px;
+  text-align: center; }
 
 fieldset {
   padding: 16px; }
@@ -321,9 +332,9 @@ option {
 button {
   border-radius: 6px;
   width: 200px;
-  margin-top: 15px;
-  background-color: #A81A2B;
-  color: white;
+  margin-left: 20px;
+  background-color: black;
+  color: yellow;
   border: none;
   text-align: center;
   font-size: 25px;
@@ -332,9 +343,15 @@ button {
 /*----------------------------------------------------------------------------
   Image
 ----------------------------------------------------------------------------*/
+img {
+  border-radius: 5px; }
+
 /*----------------------------------------------------------------------------
   Paragraph
 ----------------------------------------------------------------------------*/
+p.intro-text {
+  font-size: 22px; }
+
 .envelope {
   /*  text-align: center;*/ }
 
@@ -354,6 +371,20 @@ button {
 /*----------------------------------------------------------------------------
   Vendor
 ----------------------------------------------------------------------------*/
+.formsBox {
+  width: 45%;
+  position: relative; }
+
+.questionText {
+  width: 35%; }
+
+div.output {
+  position: relative; }
+
+#characterQuestion {
+  position: absolute;
+  width: 85%; }
+
 .headerimg {
   -webkit-filter: invert(100%);
   filter: invert(100%);

@@ -2,6 +2,7 @@
 const state = {
   currentPage: 'start',
   currentQuestion: 0,
+  quizzedPeople: [],
   people: [],
   scores: {
     right: [],
@@ -66,17 +67,14 @@ getAllPeople(1)
     console.log('state object: ',state);
     renderIntro();
     return state;
-  })
+  })  // end of getAllPeople()
 
 
 function renderIntro(){
-  var introTempl = "<h2 class='intro'>Welcome to the Star Wars Character Quiz!</h2> "
-  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human conditions after all these years?  Remind of yourself of some of these unforgettable characters and have fun with the quiz at the same time!</p><form id='js-quizz-start-form'><label for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
-
-    // console.log('this is state.people: ', state.people);
+  var introTempl = "<h2 class='intro'>Welcome!</h2> "
+  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human conditions after all these years?  Remind yourself of some of these unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
 
   $(".output").html(introTempl);
-
 
     $("#js-quizz-start-form").submit(function(ev) {
       ev.preventDefault();
@@ -85,42 +83,47 @@ function renderIntro(){
 
       proceedQuiz();
     });
-}
+}  // end of renderIntro()
 
 
 function generateWhoQuestion(obj){
-  console.log('inside generateWhoQuestion:  ',obj);
   // assign the answer and the alternatives...
   let char =  { name: fetchRandomCharacter(obj),
                 correct: true }
-  let false1 = fetchRandomCharacter(obj);
-  let false2 = fetchRandomCharacter(obj);
-  let false3 = fetchRandomCharacter(obj);
-  let false4 = fetchRandomCharacter(obj);
+
+  // if the name has already been quizzed, get another one
+  if (state.quizzedPeople.indexOf(char.name) > -1){
+    char = { name: fetchRandomCharacter(obj),
+             correct: true }
+  } else {
+    // Keep track of quizzed people so we don't quiz on the same character twice
+    state.quizzedPeople.push(char.name);
+  }
+
+  // set up the list of choices...
+  let false1 = fetchRandomCharacter(obj),
+      false2 = fetchRandomCharacter(obj),
+      false3 = fetchRandomCharacter(obj),
+      false4 = fetchRandomCharacter(obj);
   let choices = [false1, false2, false3, false4, char.name ];
 
-  // push the right answer onto the array of answers
-  // choices.push(char);
-
-  // make sure no duplicates exist in the answer array
+  // Redundant now but make sure no duplicates exist--be sure!
   if (noDupes(choices)){
     console.log('No Duplicates!!!!');
   } else {
     console.log('There be Duplicates!!!!');
     removeDupes(choices, obj);
   }
-
   shuffleArray(choices);
-
   renderQuestion(obj, char, choices);
-
-  // Here're the questions, followed the an array of possible answers...
-  //console.log(`Who is this: ${obj[char.name].img_url}?`);
-  //console.log(`${choices}`);
 }  // end of generateWhoQuestion()
 
+
+
+// Actually lay out the question
 function renderQuestion(obj, char, choices){
   let template = `<img src="${obj[char.name].img_url}"/><br> `
+  template += `<div class="formsBox">`
   template += `<p class="questionText">Who is this?</p>`
   template += `<form id="characterQuestion" class="radioButtons" value="radio"> `
   template += `<input type="radio" value="${choices[0]}" name="character">${choices[0]}</input>  `
@@ -128,24 +131,20 @@ function renderQuestion(obj, char, choices){
   template += `<input type="radio" value="${choices[2]}" name="character">${choices[2]}</input>  `
   template += `<input type="radio" value="${choices[3]}" name="character">${choices[3]}</input>  `
   template += `<input type="radio" value="${choices[4]}" name="character">${choices[4]}</input><br>`
-  template += `<input type="submit" value="Submit"></input></form>`
+  template += `<input type="submit" value="Submit"></input></form></div>`
 
 
   $(".output").html(template);
 
-  $("#characterQuestion").submit(function(ev) {
+  $(".radioButtons").submit(function(ev) {
     ev.preventDefault();
     var choice = $("input:radio[name='character']:checked").val();
 
-
     scoreQuestion(choice, char);
 
-
     proceedQuiz();
-
   });
 }  //end of renderQuestion()
-
 
 
 function scoreQuestion(choice, char){
@@ -161,7 +160,7 @@ function scoreQuestion(choice, char){
 }  // end or scoreQuestion()
 
 
-
+// increments state variables and directs the flow of the quiz
 function proceedQuiz(){
   console.log('inside proceedQuiz');
   if (state.currentQuestion < maxQuestions && state.currentPage === 'question') {
@@ -174,15 +173,14 @@ function proceedQuiz(){
     renderFinalPg();
   }
   console.log(`Your score is right: ${state.scores.right.length}  wrong: ${state.scores.wrong.length}.`)
-}
-
+}  // End of proceedQuiz()
 
 
 function renderFinalPg(){
   console.log('Final Page!')
 }
 
-
+// this exists just in case (used to use it more directly than now)
 function noDupes(arr){
   let unique = [...new Set(arr)];
   if (unique.length !== arr.length){
@@ -193,7 +191,9 @@ function noDupes(arr){
 }  // end of noDupes()
 
 
+// Hopefully this is not needed now, but I keep it just in case.
 function removeDupes(arr, obj){
+  console.log('Calling removeDupes()!!!')
   if ( arr[0] === arr[1] ) {
     arr[0] = fetchRandomCharacter(obj);
   }

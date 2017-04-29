@@ -1,3 +1,21 @@
+.formsBox {
+  width: 45%;
+  position: relative;
+}
+
+.questionText {
+  width: 35%;
+}
+
+div.output {
+  position: relative;
+}
+
+#characterQuestion {
+  position: absolute;
+  width: 85%;
+}
+
 .headerimg {
   -webkit-filter: invert(100%);
   filter: invert(100%);
