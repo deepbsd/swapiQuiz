@@ -285,6 +285,7 @@ h3.header {
 
 h2.intro {
   margin-top: 15px;
+  margin-bottom: 15px;
   font-family: 'Exo', sans-serif;
   font-size: 32px; }
 
@@ -306,28 +307,11 @@ form {
   font-size: 22px;
   text-align: center; }
 
-#js-quiz-start-form #start-quiz {
-  margin-top: 30px;
-  text-align: center; }
-
-fieldset {
-  padding: 16px; }
-
-select {
-  font-family: sans-serif;
-  font-size: 15px;
-  color: gray;
-  font-weight: medium;
-  background: white; }
-
 input {
   border: dotted 0.1px black;
   border-radius: 4px;
   font-family: sans-serif;
   font-size: 20px; }
-
-option {
-  padding-left: 30px; }
 
 button {
   border-radius: 6px;
@@ -335,7 +319,7 @@ button {
   margin-left: 20px;
   background-color: black;
   color: yellow;
-  border: none;
+  border: 1px solid yellow;
   text-align: center;
   font-size: 25px;
   font-family: "Coiny"; }
@@ -350,6 +334,7 @@ img {
   Paragraph
 ----------------------------------------------------------------------------*/
 p.intro-text {
+  font-family: 'Exo', sans-serif;
   font-size: 22px; }
 
 .envelope {
@@ -385,92 +370,9 @@ div.output {
   position: absolute;
   width: 85%; }
 
-.headerimg {
-  -webkit-filter: invert(100%);
-  filter: invert(100%);
-  height: 50px;
-  width: 50px;
-  margin: 0;
-  vertical-align: middle; }
-
-.js-search-results {
-  width: 150px; }
-
-.js-search-form {
-  background-color: white;
-  /*min-width: 325px;*/ }
-
-.subwrap {
-  width: 100%;
-  margin-top: 9px; }
-
-.textform {
-  width: 100%;
-  height: 35px;
-  margin-bottom: 5px;
-  padding-left: 30px; }
-  @media only screen and (min-width: 768px) {
-    .textform {
-      float: left;
-      width: 32%;
-      margin-right: 2%; } }
-
-.dropdown {
-  width: 100%;
-  height: 35px;
-  margin-bottom: 2%; }
-  @media only screen and (min-width: 768px) {
-    .dropdown {
-      float: left;
-      width: 32%;
-      margin-right: 2%; } }
-
 @media only screen and (min-width: 720px) {
   select:last-of-type {
     margin-right: 0; } }
-
-.thirdtext {
-  width: 34%;
-  height: 35px;
-  float: left;
-  padding: 6px 30px;
-  margin-right: 2%; }
-
-.subwrap input:last-of-type {
-  margin-right: 0; }
-
-.latestvideo {
-  margin-right: 70px;
-  float: right;
-  font-family: sans-serif;
-  color: gray; }
-
-.halftext input {
-  margin-top: 9px;
-  width: 49%;
-  margin-right: 2%;
-  height: 35px;
-  padding: 6px 30px;
-  float: left; }
-
-.halftext input:last-of-type {
-  margin-right: 0; }
-
-.textform2 {
-  margin-top: 2%;
-  width: 100%;
-  height: 40px;
-  padding-left: 30px; }
-
-.labeltext {
-  word-wrap: break-word;
-  width: 30%;
-  font-family: sans-serif;
-  font-size: 22px;
-  font-weight: medium;
-  color: gray;
-  float: left;
-  padding: 6px 0; }
 
 .questionText {
   font-family: "Trebuchet MS";
@@ -479,14 +381,3 @@ div.output {
 .acenter {
   display: inline-block;
   text-align: center; }
-
-.text-center {
-  text-align: center; }
-
-/*  Output Styles   */
-div.video-box {
-  width: 100px; }
-
-.nimg {
-  display: inline-block;
-  vertical-align: middle; }

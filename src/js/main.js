@@ -122,16 +122,17 @@ function generateWhoQuestion(obj){
 
 // Actually lay out the question
 function renderQuestion(obj, char, choices){
-  let template = `<img src="${obj[char.name].img_url}"/><br> `
+  let template = `<img src="${obj[char.name].img_url}"/><br>`
   template += `<div class="formsBox">`
   template += `<p class="questionText">Who is this?</p>`
-  template += `<form id="characterQuestion" class="radioButtons" value="radio"> `
-  template += `<input type="radio" value="${choices[0]}" name="character">${choices[0]}</input>  `
-  template += `<input type="radio" value="${choices[1]}" name="character">${choices[1]}</input>  `
-  template += `<input type="radio" value="${choices[2]}" name="character">${choices[2]}</input>  `
-  template += `<input type="radio" value="${choices[3]}" name="character">${choices[3]}</input>  `
+  template += `<form id="characterQuestion" class="radioButtons" value="radio">`
+  template += `<input type="radio" value="${choices[0]}" name="character">${choices[0]}</input>`
+  template += `<input type="radio" value="${choices[1]}" name="character">${choices[1]}</input>`
+  template += `<input type="radio" value="${choices[2]}" name="character">${choices[2]}</input>`
+  template += `<input type="radio" value="${choices[3]}" name="character">${choices[3]}</input>`
   template += `<input type="radio" value="${choices[4]}" name="character">${choices[4]}</input><br>`
-  template += `<input type="submit" value="Submit"></input></form></div>`
+  template += '<input type="submit" value="Submit"></input></form></div>'
+
 
 
   $(".output").html(template);

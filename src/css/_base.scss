@@ -39,6 +39,7 @@ h3.header {
 }
 h2.intro {
   margin-top: 15px;
+  margin-bottom: 15px;
   font-family: 'Exo', sans-serif;
   font-size: 32px;
 }
@@ -65,21 +66,15 @@ form {
   text-align: center;
 }
 
-#js-quiz-start-form #start-quiz {
-  margin-top: 30px;
-  text-align: center;
-}
+// #js-quiz-start-form #start-quiz {
+//   margin-top: 30px;
+//   text-align: center;
+// }
 
-fieldset {
-  padding: 16px;
-}
-select {
-  font-family: sans-serif;
-  font-size: 15px;
-  color: gray;
-  font-weight: medium;
-  background: white;
-}
+// fieldset {
+//   padding: 16px;
+// }
+
 input {
   border: dotted 0.1px black;
   border-radius: 4px;
@@ -87,9 +82,7 @@ input {
   font-size: 20px;
 }
 
-option {
-  padding-left: 30px;
-}
+
 
 button {
   border-radius: 6px;
@@ -97,7 +90,7 @@ button {
   margin-left: 20px;
   background-color: black;
   color: yellow;
-  border: none;
+  border: 1px solid yellow;
   text-align: center;
   font-size: 25px;
   font-family: "Coiny";
@@ -116,5 +109,6 @@ img {
 ----------------------------------------------------------------------------*/
 
 p.intro-text {
+  font-family: 'Exo', sans-serif;
   font-size: 22px;
 }
