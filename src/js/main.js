@@ -130,27 +130,27 @@ function renderQuestion(obj, char, choices){
   <div class="formsBox">
     <form id="characterQuestion" class="radioButtons" value="radio">
       <p class="questionText">Who is this?</p>
-      <p>
-      <input type="radio" id="option-1" name="character" value="${choices[0]}">
-      <label for="option-1">${choices[0]}</label>
+      <p class="optionPick">
+          <input class="radio" type="radio" id="option-1" name="character" value="${choices[0]}">
+          <label for="option-1">${choices[0]}</label>
       </p>
-      <p>
-      <input type="radio" id="option-2" name="character" value="${choices[1]}">
-      <label for="option-2">${choices[1]}</label>
+      <p class="optionPick">
+        <input class="radio" type="radio" id="option-2" name="character" value="${choices[1]}">
+        <label for="option-2">${choices[1]}</label>
       </p>
-      <p>
-      <input type="radio" id="option-3" name="character" value="${choices[2]}">
-      <label for="option-3">${choices[2]}</label>
+      <p class="optionPick">
+          <input class="radio" type="radio" id="option-3" name="character" value="${choices[2]}">
+          <label for="option-3">${choices[2]}</label>
       </p>
-      <p>
-      <input type="radio" id="option-4" name="character" value="${choices[3]}">
-      <label for="option-4">${choices[3]}</label>
+      <p class="optionPick">
+          <input class="radio" type="radio" id="option-4" name="character" value="${choices[3]}">
+          <label for="option-4">${choices[3]}</label>
       </p>
-      <p>
-      <input type="radio" id="option-5" name="character" value="${choices[4]}">
-      <label for="option-5">${choices[4]}</label>
+      <p class="optionPick">
+          <input class="radio" type="radio" id="option-5" name="character" value="${choices[4]}">
+          <label for="option-5">${choices[4]}</label>
       </p>
-      <input type="submit" value="Submit"></input>
+      <input type="submit" value="Submit" class="formSubmit"></input>
     </form>
   </div>`;
 
