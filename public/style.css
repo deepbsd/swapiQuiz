@@ -247,12 +247,15 @@ html {
   Transitions
 ----------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------
+  HTML
+----------------------------------------------------------------------------*/
+html {
+  background: url("/img/dangerous_planet.jpg") black; }
+
+/*----------------------------------------------------------------------------
   Body
 ----------------------------------------------------------------------------*/
 body {
-  background-image: url("/img/dangerous_planet.jpg");
-  background-color: black;
-  font-family: "Arial", sans-serif;
   color: white; }
 
 /*----------------------------------------------------------------------------
@@ -292,26 +295,22 @@ h2.intro {
 /*----------------------------------------------------------------------------
   HTML
 ----------------------------------------------------------------------------*/
-html {
-  background-color: lightgray;
-  font-size: 14px; }
-
 /*----------------------------------------------------------------------------
   FORM ELEMENTS
 ----------------------------------------------------------------------------*/
-form {
-  margin-top: 30px;
-  border: 1px solid yellow;
-  border-radius: 8px;
-  font-family: "Trebuchet MS";
-  font-size: 22px;
-  text-align: center; }
+#start-quiz {
+  margin-top: 20px; }
+
+.start-quiz-label {
+  font-family: 'Exo', sans-serif;
+  font-size: 28px; }
 
 input {
   border: dotted 0.1px black;
   border-radius: 4px;
   font-family: sans-serif;
-  font-size: 20px; }
+  font-size: 20px;
+  margin-top: 10px; }
 
 button {
   border-radius: 6px;
@@ -328,19 +327,20 @@ button {
   Image
 ----------------------------------------------------------------------------*/
 img {
-  border-radius: 5px; }
+  border-radius: 5px;
+  margin-bottom: 10px; }
 
 /*----------------------------------------------------------------------------
   Paragraph
 ----------------------------------------------------------------------------*/
+p.questionText {
+  width: 100%; }
+
 p.intro-text {
   font-family: 'Exo', sans-serif;
   font-size: 22px; }
 
-.envelope {
-  /*  text-align: center;*/ }
-
-.y-outerwrap {
+.question-container {
   margin: 0 auto;
   width: 90%; }
 
@@ -357,27 +357,56 @@ p.intro-text {
   Vendor
 ----------------------------------------------------------------------------*/
 .formsBox {
-  width: 45%;
-  position: relative; }
+  border: solid 1px yellow;
+  border-radius: 5px;
+  font-family: 'Exo', sans-serif;
+  font-size: 18px;
+  padding: 40px;
+  text-align: left; }
+  @media only screen and (min-width: 620px) {
+    .formsBox {
+      display: inline-block;
+      margin-left: 16px;
+      vertical-align: top;
+      width: 260px; } }
+  @media only screen and (min-width: 850px) {
+    .formsBox {
+      display: inline-block;
+      font-size: 22px;
+      margin-left: 22px;
+      width: auto; } }
 
-.questionText {
-  width: 35%; }
-
-div.output {
-  position: relative; }
-
-#characterQuestion {
-  position: absolute;
-  width: 85%; }
+.output {
+  margin: 0 auto;
+  max-width: 320px;
+  width: 90%; }
+  @media only screen and (min-width: 620px) {
+    .output {
+      max-width: 600px;
+      width: 100%; } }
+  @media only screen and (min-width: 850px) {
+    .output {
+      max-width: 850px;
+      width: 100%; } }
 
 @media only screen and (min-width: 720px) {
   select:last-of-type {
     margin-right: 0; } }
 
-.questionText {
+p.questionText {
+  color: yellow;
   font-family: "Trebuchet MS";
   font-size: 22px; }
 
-.acenter {
-  display: inline-block;
-  text-align: center; }
+@media only screen and (min-width: 620px) {
+  .image-wrap {
+    display: inline-block;
+    width: 260px; } }
+
+@media only screen and (min-width: 850px) {
+  .image-wrap {
+    display: inline-block;
+    width: 320px; } }
+
+img {
+  width: 100%; }

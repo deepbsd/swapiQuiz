@@ -1,0 +1,17 @@
+.image-wrap {
+  @include responsive(hoover) {
+    display: inline-block;
+    width: 260px;
+  }
+}
+
+.image-wrap {
+  @include responsive(kennedy) {
+    display: inline-block;
+    width: 320px;
+  }
+}
+
+img {
+  width: 100%;
+}

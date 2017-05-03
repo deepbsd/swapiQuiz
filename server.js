@@ -29,7 +29,6 @@ app.get('/heartbeat', function(req, res) {
 var swapiPeople = [];
 
 
-
 var getData = function(data) {
   //console.log(data);
   // app.get('/swapi', function(req, res) {

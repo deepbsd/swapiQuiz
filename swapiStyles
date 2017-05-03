@@ -1,0 +1,15 @@
+.question-container {
+
+  & .title {}
+
+  & .bigbox {
+
+    & .characterimg {}
+
+    & .question {}
+
+    & .option {}
+
+    & .submit {}
+  }
+}

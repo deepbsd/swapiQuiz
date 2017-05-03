@@ -3,6 +3,7 @@ const state = {
   currentPage: 'start',
   currentQuestion: 0,
   quizzedPeople: [],
+  missedCharacters: [],
   people: [],
   scores: {
     right: [],
@@ -72,7 +73,7 @@ getAllPeople(1)
 
 function renderIntro(){
   var introTempl = "<h2 class='intro'>Welcome!</h2> "
-  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human conditions after all these years?  Remind yourself of some of these unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
+  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human conditions after all these years?  Remind yourself of some of these unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label class='start-quiz-label' for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
 
   $(".output").html(introTempl);
 
@@ -122,16 +123,36 @@ function generateWhoQuestion(obj){
 
 // Actually lay out the question
 function renderQuestion(obj, char, choices){
-  let template = `<img src="${obj[char.name].img_url}"/><br>`
-  template += `<div class="formsBox">`
-  template += `<p class="questionText">Who is this?</p>`
-  template += `<form id="characterQuestion" class="radioButtons" value="radio">`
-  template += `<input type="radio" value="${choices[0]}" name="character">${choices[0]}</input>`
-  template += `<input type="radio" value="${choices[1]}" name="character">${choices[1]}</input>`
-  template += `<input type="radio" value="${choices[2]}" name="character">${choices[2]}</input>`
-  template += `<input type="radio" value="${choices[3]}" name="character">${choices[3]}</input>`
-  template += `<input type="radio" value="${choices[4]}" name="character">${choices[4]}</input><br>`
-  template += '<input type="submit" value="Submit"></input></form></div>'
+  let template = `
+  <div class="image-wrap">
+    <img src="${obj[char.name].img_url}"/>
+  </div>
+  <div class="formsBox">
+    <form id="characterQuestion" class="radioButtons" value="radio">
+      <p class="questionText">Who is this?</p>
+      <p>
+      <input type="radio" id="option-1" name="character" value="${choices[0]}">
+      <label for="option-1">${choices[0]}</label>
+      </p>
+      <p>
+      <input type="radio" id="option-2" name="character" value="${choices[1]}">
+      <label for="option-2">${choices[1]}</label>
+      </p>
+      <p>
+      <input type="radio" id="option-3" name="character" value="${choices[2]}">
+      <label for="option-3">${choices[2]}</label>
+      </p>
+      <p>
+      <input type="radio" id="option-4" name="character" value="${choices[3]}">
+      <label for="option-4">${choices[3]}</label>
+      </p>
+      <p>
+      <input type="radio" id="option-5" name="character" value="${choices[4]}">
+      <label for="option-5">${choices[4]}</label>
+      </p>
+      <input type="submit" value="Submit"></input>
+    </form>
+  </div>`;
 
 
 
@@ -156,8 +177,10 @@ function scoreQuestion(choice, char){
   } else {
     message = " Sorry, no.  You are mistaken.";
     state.scores.wrong.push(state.currentQuestion);
+    state.missedCharacters.push(char.name);
   }
   console.log('You chose: ', choice, message);
+  console.log('Missed Characters: ', state.missedCharacters)
 }  // end or scoreQuestion()
 
 
@@ -178,7 +201,7 @@ function proceedQuiz(){
 
 
 function renderFinalPg(){
-  console.log('Final Page!')
+  console.log('Final Page!');
 }
 
 // this exists just in case (used to use it more directly than now)
