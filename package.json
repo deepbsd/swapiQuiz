@@ -18,7 +18,7 @@
     "url": "https://github.com/deepbsd/swapiQuiz/issues"
   },
   "homepage": "https://github.com/deepbsd/swapiQuiz",
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.16.1",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
