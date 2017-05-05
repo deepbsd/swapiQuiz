@@ -1,3 +1,5 @@
+// Part of the assignment is to write a fresh $.get function...
+
 var swapiModule = function () {
   var rootURL = 'https://swapi.co/api/';
 

@@ -319,6 +319,7 @@ button {
   border-radius: 6px;
   width: 200px;
   margin-left: 20px;
+  margin-top: 20px;
   background-color: black;
   color: yellow;
   border: 1px solid yellow;
@@ -398,6 +399,12 @@ p.optionPick {
 @media only screen and (min-width: 720px) {
   select:last-of-type {
     margin-right: 0; } }
+
+.summary {
+  text-align: center;
+  color: yellow;
+  font-family: "Trebuchet MS";
+  font-size: 22px; }
 
 p.questionText {
   color: yellow;

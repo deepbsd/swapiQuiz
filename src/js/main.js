@@ -1,4 +1,8 @@
 // swapiModule is from https://github.com/cfjedimaster/SWAPI-Wrapper
+
+// ################### Single State Object ####################
+//#############################################################
+
 const state = {
   currentPage: 'start',
   currentQuestion: 0,
@@ -12,8 +16,10 @@ const state = {
 };
 
 const maxQuestions = 10;
+const rootURL = 'https://www.swapi.co/api/people/';
 
-
+// ######################  State Modification Methods ####################
+// #######################################################################
 
 function getAllPeople (page) {
   var people = {}
@@ -23,17 +29,27 @@ function getAllPeople (page) {
     function getPeoplePage(page) {
       // inner promises for each page of data from swapi API...
       return new Promise(function (innerRes, innerRej) {
-        swapiModule.getPeople(page, function (swapipage) {
-          swapipage.results.forEach( character => {
-            people[character.name] = character;
-          });
-          if (swapipage.next !== null) {
-            innerRes(getPeoplePage(page + 1));
+        $.ajax({
+          url: rootURL+'?page='+page,
+          type: "GET",
+          headers: {
+            "accept": "application/json;odata=verbose",
+          },
+          success: function(swapipage) {
+            swapipage.results.forEach( character => {
+              people[character.name] = character;
+            });
+            if (swapipage.next !== null) {
+              innerRes(getPeoplePage(page + 1));
+            }
+            else {
+              outerRes(people);
+            }
+          },
+          error: function(error) {
+            console.log('error');
           }
-          else {
-            outerRes(people);
-          }
-        })
+         });
       })
     }
     getPeoplePage(page);
@@ -71,9 +87,14 @@ getAllPeople(1)
   })  // end of getAllPeople()
 
 
+
+// ########################  DOM Modification/Rendering Methods ######################
+// ###################################################################################
+
+
 function renderIntro(){
   var introTempl = "<h2 class='intro'>Welcome!</h2> "
-  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human conditions after all these years?  Remind yourself of some of these unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label class='start-quiz-label' for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
+  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human condition after all these years?  Remind yourself of some of these unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label class='start-quiz-label' for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
 
   $(".output").html(introTempl);
 
@@ -169,20 +190,31 @@ function renderQuestion(obj, char, choices){
 }  //end of renderQuestion()
 
 
-function scoreQuestion(choice, char){
-  var message;
-  if (choice === char.name) {
-    message = " You are right!";
-    state.scores.right.push(state.currentQuestion);
-  } else {
-    message = " Sorry, no.  You are mistaken.";
-    state.scores.wrong.push(state.currentQuestion);
-    state.missedCharacters.push(char.name);
-  }
-  console.log('You chose: ', choice, message);
-  console.log('Missed Characters: ', state.missedCharacters)
-}  // end or scoreQuestion()
+function renderFinalPg(){
+  let template = `
+    <div class="summary">
+      <p>Congratulations!  You got ${state.scores.right.length} right and ${state.scores.wrong.length} wrong!</p>
+      <p>@missed_characters</p>
+    <button class="restart">Play again?</button>
+    </div>
+  `;
 
+  if (state.scores.wrong.length > 0){
+    template = template.replace(/@missed_characters/i, `Missed Characters: ${state.missedCharacters}`);
+  } else {
+    template = template.replace(/@missed_characters/i, 'No Missed Characters!');
+  }
+
+  $(".output").html(template);
+
+  $(".restart").click(function(){
+    location.reload();
+  });
+
+}  // End of renderFinalPg()
+
+//######################  Control Program Flow ########################
+//#####################################################################
 
 // increments state variables and directs the flow of the quiz
 function proceedQuiz(){
@@ -199,10 +231,23 @@ function proceedQuiz(){
   console.log(`Your score is right: ${state.scores.right.length}  wrong: ${state.scores.wrong.length}.`)
 }  // End of proceedQuiz()
 
+//######################  Modify State Object ########################
+//####################################################################
 
-function renderFinalPg(){
-  console.log('Final Page!');
-}
+function scoreQuestion(choice, char){
+  var message;
+  if (choice === char.name) {
+    message = " You are right!";
+    state.scores.right.push(state.currentQuestion);
+  } else {
+    message = " Sorry, no.  You are mistaken.";
+    state.scores.wrong.push(state.currentQuestion);
+    state.missedCharacters.push(char.name);
+  }
+  console.log('You chose: ', choice, message);
+  console.log('Missed Characters: ', state.missedCharacters)
+}  // end or scoreQuestion()
+
 
 // this exists just in case (used to use it more directly than now)
 function noDupes(arr){
