@@ -400,6 +400,24 @@ p.optionPick {
   select:last-of-type {
     margin-right: 0; } }
 
+.loader {
+  margin-top: 250px;
+  margin-left: 250px;
+  border: 16px solid gray;
+  /* Light grey */
+  border-top: 16px solid #f2e93c;
+  /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 .summary {
   text-align: center;
   color: yellow;
