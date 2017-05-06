@@ -401,8 +401,8 @@ p.optionPick {
     margin-right: 0; } }
 
 .loader {
-  margin-top: 250px;
-  margin-left: 250px;
+  margin-top: 25%;
+  margin-left: 25%;
   border: 16px solid gray;
   /* Light grey */
   border-top: 16px solid #f2e93c;
