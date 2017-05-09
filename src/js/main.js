@@ -178,7 +178,7 @@ function renderQuestion(obj, char, choices){
           <input class="radio" type="radio" id="option-5" name="character" value="${choices[4]}">
           <label for="option-5">${choices[4]}</label>
       </p>
-      <input type="submit" value="Submit" class="formSubmit"></input>
+      <input type="submit" value="Do or Do Not" class="formSubmit"></input>
     </form>
   </div>`;
 
