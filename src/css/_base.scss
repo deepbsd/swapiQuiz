@@ -6,6 +6,11 @@ html {
   background: url('/img/dangerous_planet.jpg') black;
 }
 
+@font-face {
+  font-family: Starjhol;
+  src: url(Starjhol.ttf);
+}
+
 /*----------------------------------------------------------------------------
   Body
 ----------------------------------------------------------------------------*/
@@ -30,11 +35,19 @@ header {
 h1.header {
   margin: 0px auto;
   padding: 0px 0px 5px 0px;
-  font-family: 'Exo', sans-serif;
-  font-size: 32px;
+  font-family: 'Starjhol', 'Exo';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
   color: yellow;
-  width: 250px;
+  width: 550px;
   display: inline-block;
+}
+h2.header {
+  font-family: 'Starjhol';
+  font-size: 35px;
+  font-weight: normal;
+  color: yellow;
 }
 h3.header {
   padding: 0px 0px 5px 0px;

@@ -15,7 +15,7 @@ const state = {
   },
 };
 
-const maxQuestions = 10;
+const maxQuestions = 15;
 
 const rootURL = 'https://www.swapi.co/api/people/';
 
@@ -96,12 +96,12 @@ getAllPeople(1)
 
 function renderIntro(){
 
-  setTimeout(function(){
-    $(".loader").fadeOut();
-  }, 50);
+
+ $(".loader").fadeOut('fast');
+
 
   var introTempl = "<h2 class='intro'>Welcome!</h2> "
-  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human condition after all these years?  Remind yourself of some of these unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label class='start-quiz-label' for='quizapp-start'>Start Your Star Wars Quiz?</label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Start Quiz</button></form></div> <!-- end of quiz-intro  -->"
+  introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human condition after all these years?  Remind yourself of some of those unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label class='start-quiz-label' for='quizapp-start'></label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Join Rebellion</button></form></div> <!-- end of quiz-intro  -->"
 
   $(".output").html(introTempl);
 
@@ -121,11 +121,11 @@ function generateWhoQuestion(obj){
                 correct: true }
 
   // if the name has already been quizzed, get another one
-  if (state.quizzedPeople.indexOf(char.name) > -1){
-    char = { name: fetchRandomCharacter(obj),
-             correct: true }
+  if (state.quizzedPeople.indexOf(char.name) > -1) {
+    console.log('GODDAMN DUPLICATE!!!!!');
+    generateWhoQuestion(obj);
   } else {
-    // Keep track of quizzed people so we don't quiz on the same character twice
+    // if char.name is NOT already in quizzedPeople then add it and proceed
     state.quizzedPeople.push(char.name);
   }
 
@@ -136,7 +136,7 @@ function generateWhoQuestion(obj){
       false4 = fetchRandomCharacter(obj);
   let choices = [false1, false2, false3, false4, char.name ];
 
-  // Redundant now but make sure no duplicates exist--be sure!
+  // Redundant now but make sure no duplicates false choices exist--be sure!
   if (noDupes(choices)){
     console.log('No Duplicates!!!!');
   } else {
