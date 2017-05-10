@@ -57,7 +57,7 @@ function getAllPeople (page) {
 }  // end of getAllPeople()
 
 
-
+// Make the first call with the page "1" argument
 getAllPeople(1)
   .then(function (data) {
     var images = {};
@@ -96,7 +96,7 @@ getAllPeople(1)
 
 function renderIntro(){
 
-
+  // Load the spinning loader animation
  $(".loader").fadeOut('fast');
 
 
@@ -122,8 +122,8 @@ function generateWhoQuestion(obj){
 
   // if the name has already been quizzed, get another one
   if (state.quizzedPeople.indexOf(char.name) > -1) {
-    console.log('GODDAMN DUPLICATE!!!!!');
-    generateWhoQuestion(obj);
+    console.log('DUPLICATE CHARACTER!!!!!  Not using: ',char.name);
+    return generateWhoQuestion(obj);
   } else {
     // if char.name is NOT already in quizzedPeople then add it and proceed
     state.quizzedPeople.push(char.name);
@@ -138,9 +138,9 @@ function generateWhoQuestion(obj){
 
   // Redundant now but make sure no duplicates false choices exist--be sure!
   if (noDupes(choices)){
-    console.log('No Duplicates!!!!');
+    console.log('No Duplicates in choices.');
   } else {
-    console.log('There be Duplicates!!!!');
+    console.log('There be Duplicates in choices!!!!');
     removeDupes(choices, obj);
   }
   shuffleArray(choices);
