@@ -23,6 +23,7 @@
 .output {
   margin: 0 auto;
   max-width: 320px;
+  text-align: center;
   width: 90%;
   @include responsive(hoover) {
     max-width: 600px;
