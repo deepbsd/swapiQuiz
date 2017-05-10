@@ -136,7 +136,7 @@ function generateWhoQuestion(obj){
       false4 = fetchRandomCharacter(obj);
   let choices = [false1, false2, false3, false4, char.name ];
 
-  // Redundant now but make sure no duplicates false choices exist--be sure!
+  // Redundant now but make sure no duplicate false choices exist--be sure!
   if (noDupes(choices)){
     console.log('No Duplicates in choices.');
   } else {
@@ -188,6 +188,7 @@ function renderQuestion(obj, char, choices){
 
   $(".radioButtons").submit(function(ev) {
     ev.preventDefault();
+    // get the chosen value and score the question...
     var choice = $("input:radio[name='character']:checked").val();
 
     scoreQuestion(choice, char);
@@ -197,6 +198,7 @@ function renderQuestion(obj, char, choices){
 }  //end of renderQuestion()
 
 
+// The user has made it to the end of the quiz!  Show the results!
 function renderFinalPg(){
   let template = `
     <div class="summary">
