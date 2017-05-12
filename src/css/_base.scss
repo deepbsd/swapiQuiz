@@ -8,7 +8,7 @@ html {
 
 @font-face {
   font-family: Starjhol;
-  src: url(Starjhol.ttf);
+  src: url('/fonts/Starjhol.ttf');
 }
 
 /*----------------------------------------------------------------------------
@@ -125,17 +125,19 @@ button.restart {
   Image
 ----------------------------------------------------------------------------*/
 img {
-  border-radius: 5px;
   margin-bottom: 10px;
 }
 
+.image-wrap {
+  border-radius: 5px;
+}
 
 /*----------------------------------------------------------------------------
   Paragraph
 ----------------------------------------------------------------------------*/
 
 p.questionText {
-  font-size: 30px;
+  font-size: 33px;
   margin-bottom: 30px;
   width: 100%;
 }

@@ -209,7 +209,7 @@ function renderFinalPg(){
   `;
 
   if (state.scores.wrong.length > 0){
-    template = template.replace(/@missed_characters/i, `Missed Characters: ${state.missedCharacters}`);
+    template = template.replace(/@missed_characters/i, `Missed Characters: ${state.missedCharacters.join(', ')}`);
   } else {
     template = template.replace(/@missed_characters/i, 'No Missed Characters!');
   }
