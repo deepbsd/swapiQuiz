@@ -319,6 +319,9 @@ h2.intro {
 
 input.formSubmit {
   border: solid 0.1px black;
+  background-color: black;
+  color: white;
+  opacity: 0.8;
   padding: 15px;
   border-radius: 4px;
   font-family: sans-serif;
