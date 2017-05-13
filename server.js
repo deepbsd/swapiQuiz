@@ -17,6 +17,7 @@ app.use( '/', express.static(__dirname + '/public') );
 app.use( '/css', express.static(__dirname + '/src/css') );
 app.use( '/img', express.static(__dirname + '/src/img') );
 app.use( '/js', express.static(__dirname + '/src/js') );
+// needed to add fonts to make them available to front end
 app.use( '/fonts', express.static(__dirname + '/src/fonts/jedi/starjedi') );
 
 
