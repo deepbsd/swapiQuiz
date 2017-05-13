@@ -317,6 +317,26 @@ h2.intro {
   font-family: 'Exo', sans-serif;
   font-size: 28px; }
 
+.radio-label {
+  background: black;
+  border-radius: 5px;
+  color: white;
+  opacity: 0.8;
+  padding: 8px;
+  position: relative;
+  transition: all 200mx ease-in-out; }
+
+.radio-label:hover {
+  background: yellow;
+  color: maroon;
+  opacity: 0.5; }
+
+input[type="radio"]:checked + label {
+  background: black;
+  color: yellow;
+  font-weight: bold;
+  opacity: 1.0; }
+
 input.formSubmit {
   border: solid 0.1px black;
   background-color: black;
@@ -333,8 +353,9 @@ input.formSubmit:hover {
   color: yellow;
   font-weight: bold; }
 
-input.radio {
-  vertical-align: middle; }
+input[type="radio"] {
+  vertical-align: middle;
+  visibility: hidden; }
 
 button {
   border-radius: 6px;
@@ -355,7 +376,8 @@ button.restart {
   Image
 ----------------------------------------------------------------------------*/
 img {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  border-radius: 5px; }
 
 .image-wrap {
   border-radius: 5px; }
@@ -364,7 +386,7 @@ img {
   Paragraph
 ----------------------------------------------------------------------------*/
 p.questionText {
-  font-size: 33px;
+  font-size: 30px;
   margin-bottom: 30px;
   width: 100%; }
 
@@ -374,6 +396,9 @@ p.intro-text {
   text-align: left; }
 
 p.optionPick {
+  margin: 8px 5px;
+  padding: 8px 5px;
+  position: relative;
   vertical-align: middle; }
 
 .question-container {
