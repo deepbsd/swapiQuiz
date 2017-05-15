@@ -75,7 +75,7 @@ getAllPeople(1)
     // Add People to the overall object
     state.people = data;
     // testing testing...
-    console.log('state.people: ',state.people);
+    //console.log('state.people inside getAllPeople: ',state.people);
 
     return state.people;
 
@@ -329,4 +329,4 @@ function fetchRandomCharacter(obj) {
 
 
 // just for testing...
-console.log('at bottom: ',state);
+//console.log('at bottom: ',state);
