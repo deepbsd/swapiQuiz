@@ -15,7 +15,7 @@ const state = {
   },
 };
 
-const maxQuestions = 15;
+const maxQuestions = 20;
 
 const rootURL = 'https://www.swapi.co/api/people/';
 
@@ -302,7 +302,11 @@ function removeDupes(arr, obj){
   if ( arr[3] === arr[4] ) {
     arr[3] = fetchRandomCharacter(obj)
   }
-  return arr;
+  if (noDupes(arr)) {
+    return arr;
+  } else {
+    return removeDupes(arr, obj);
+  }
 }  // end of removeDupes()
 
 
