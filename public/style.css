@@ -305,13 +305,11 @@ h2.intro {
   font-size: 32px; }
 
 /*----------------------------------------------------------------------------
-  HTML
-----------------------------------------------------------------------------*/
-/*----------------------------------------------------------------------------
   FORM ELEMENTS
 ----------------------------------------------------------------------------*/
 #start-quiz {
-  margin-top: 20px; }
+  margin-top: 20px;
+  margin-bottom: 10px; }
 
 .start-quiz-label {
   font-family: 'Exo', sans-serif;
@@ -322,7 +320,7 @@ h2.intro {
   border-radius: 5px;
   color: white;
   opacity: 0.8;
-  padding: 0px;
+  padding: 0;
   position: relative;
   transition: all 200mx ease-in-out; }
 
@@ -422,7 +420,8 @@ p.optionPick {
   border-radius: 5px;
   font-family: 'Exo', sans-serif;
   font-size: 18px;
-  padding: 40px;
+  padding: 30px;
+  margin-bottom: 15px;
   text-align: left; }
   @media only screen and (min-width: 620px) {
     .formsBox {

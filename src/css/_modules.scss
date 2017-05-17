@@ -3,7 +3,8 @@
   border-radius: 5px;
   font-family: 'Exo', sans-serif;
   font-size: 18px;
-  padding: 40px;
+  padding: 30px;
+  margin-bottom: 15px;
   text-align: left;
   @include responsive(hoover) {
     display: inline-block;
