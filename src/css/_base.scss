@@ -86,9 +86,9 @@ h2.intro {
   border-radius: 5px;
   color: white;
   opacity: 0.8;
-  padding: 0;
+  padding: 5px;
   position: relative;
-  transition: all 200mx ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 .radio-label:hover {
@@ -105,8 +105,8 @@ input[type="radio"]:checked + label {
 }
 
 input.formSubmit {
-  border: solid 0.1px black;
-  background-color: black;
+  background-color: #ac675f;
+  border: none;
   color: white;
   opacity: 0.8;
   padding: 15px;
@@ -114,10 +114,13 @@ input.formSubmit {
   font-family: sans-serif;
   font-size: 20px;
   margin-top: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 400ms ease-in-out;
 }
 
 input.formSubmit:hover {
-  background: black;
+  background: maroon;
   color: yellow;
   font-weight: bold;
 }
@@ -172,9 +175,8 @@ p.intro-text {
   text-align: left;
 }
 
-p.optionPick {
-  margin: 8px 5px;
-  padding: 8px 5px;
+.optionPick li {
+  margin-bottom: 18px;
   position: relative;
   vertical-align: middle;
 }

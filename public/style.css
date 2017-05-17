@@ -320,9 +320,9 @@ h2.intro {
   border-radius: 5px;
   color: white;
   opacity: 0.8;
-  padding: 0;
+  padding: 5px;
   position: relative;
-  transition: all 200mx ease-in-out; }
+  transition: all 400ms ease-in-out; }
 
 .radio-label:hover {
   background: yellow;
@@ -336,18 +336,21 @@ input[type="radio"]:checked + label {
   opacity: 1.0; }
 
 input.formSubmit {
-  border: solid 0.1px black;
-  background-color: black;
+  background-color: #ac675f;
+  border: none;
   color: white;
   opacity: 0.8;
   padding: 15px;
   border-radius: 4px;
   font-family: sans-serif;
   font-size: 20px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 400ms ease-in-out; }
 
 input.formSubmit:hover {
-  background: black;
+  background: maroon;
   color: yellow;
   font-weight: bold; }
 
@@ -393,9 +396,8 @@ p.intro-text {
   font-size: 22px;
   text-align: left; }
 
-p.optionPick {
-  margin: 8px 5px;
-  padding: 8px 5px;
+.optionPick li {
+  margin-bottom: 18px;
   position: relative;
   vertical-align: middle; }
 
@@ -434,7 +436,7 @@ p.optionPick {
       display: inline-block;
       font-size: 22px;
       margin-left: 22px;
-      width: auto; } }
+      width: 320px; } }
 
 .output {
   margin: 0 auto;
@@ -483,15 +485,25 @@ p.questionText {
   font-family: "Trebuchet MS";
   font-size: 32px; }
 
+.radioButtons {
+  text-align: center; }
+
 @media only screen and (min-width: 620px) {
   .image-wrap {
     display: inline-block;
+    height: 412px;
+    overflow: hidden;
     width: 260px; } }
 
 @media only screen and (min-width: 850px) {
   .image-wrap {
     display: inline-block;
+    height: 436px;
     width: 320px; } }
 
 img {
   width: 100%; }
+  @media only screen and (min-width: 620px) {
+    img {
+      height: 100%;
+      width: auto; } }

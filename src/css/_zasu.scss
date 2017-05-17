@@ -1,6 +1,8 @@
 .image-wrap {
   @include responsive(hoover) {
     display: inline-block;
+    height: 412px;
+    overflow: hidden;
     width: 260px;
   }
 }
@@ -8,10 +10,15 @@
 .image-wrap {
   @include responsive(kennedy) {
     display: inline-block;
+    height: 436px;
     width: 320px;
   }
 }
 
 img {
   width: 100%;
+  @include responsive(hoover) {
+    height: 100%;
+    width: auto;
+  }
 }

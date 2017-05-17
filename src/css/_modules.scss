@@ -16,7 +16,7 @@
     display: inline-block;
     font-size: 22px;
     margin-left: 22px;
-    width: auto;
+    width: 320px;
   }
 }
 
@@ -70,4 +70,8 @@ p.questionText {
   color: yellow;
   font-family: "Trebuchet MS";
   font-size: 32px;
+}
+
+.radioButtons {
+  text-align: center;
 }

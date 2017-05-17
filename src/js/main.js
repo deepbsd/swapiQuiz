@@ -158,26 +158,28 @@ function renderQuestion(obj, char, choices){
   <div class="formsBox">
     <form id="characterQuestion" class="radioButtons" value="radio">
       <p class="questionText">Who is this?</p>
-      <p class="optionPick">
-          <input class="radio" type="radio" id="option-1" name="character" value="${choices[0]}">
-          <label class="radio-label" for="option-1">${choices[0]}</label>
-      </p>
-      <p class="optionPick">
-        <input class="radio" type="radio" id="option-2" name="character" value="${choices[1]}">
-        <label class="radio-label" for="option-2">${choices[1]}</label>
-      </p>
-      <p class="optionPick">
-          <input class="radio" type="radio" id="option-3" name="character" value="${choices[2]}">
-          <label class="radio-label" for="option-3">${choices[2]}</label>
-      </p>
-      <p class="optionPick">
-          <input class="radio" type="radio" id="option-4" name="character" value="${choices[3]}">
-          <label class="radio-label" for="option-4">${choices[3]}</label>
-      </p>
-      <p class="optionPick">
-          <input class="radio" type="radio" id="option-5" name="character" value="${choices[4]}">
-          <label class="radio-label" for="option-5">${choices[4]}</label>
-      </p>
+      <ul class="optionPick">
+        <li>
+            <input class="radio" type="radio" id="option-1" name="character" value="${choices[0]}">
+            <label class="radio-label" for="option-1">${choices[0]}</label>
+        </li>
+        <li>
+          <input class="radio" type="radio" id="option-2" name="character" value="${choices[1]}">
+          <label class="radio-label" for="option-2">${choices[1]}</label>
+        </li>
+        <li>
+            <input class="radio" type="radio" id="option-3" name="character" value="${choices[2]}">
+            <label class="radio-label" for="option-3">${choices[2]}</label>
+        </li>
+        <li>
+            <input class="radio" type="radio" id="option-4" name="character" value="${choices[3]}">
+            <label class="radio-label" for="option-4">${choices[3]}</label>
+        </li>
+        <li>
+            <input class="radio" type="radio" id="option-5" name="character" value="${choices[4]}">
+            <label class="radio-label" for="option-5">${choices[4]}</label>
+        </li>
+      </ul>
       <input type="submit" value="Do or Do Not" class="formSubmit"></input>
     </form>
   </div>`;
