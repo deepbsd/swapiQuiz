@@ -334,7 +334,3 @@ function fetchRandomCharacter(obj) {
   }
   return keys[Math.floor(Math.random() * keys.length)];
 }  // end of fetchRandomCharacter()
-
-
-// just for testing...
-//console.log('at bottom: ',state);
