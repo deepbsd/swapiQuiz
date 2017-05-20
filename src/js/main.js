@@ -1,4 +1,8 @@
 // swapiModule is from https://github.com/cfjedimaster/SWAPI-Wrapper
+// In the beginning, I used a wrapper to connect to the SWAPI database, but
+// that turned out to be inconsistent with the assignment, so I rewrote that
+// part of the script.
+
 
 // ################### Single State Object ####################
 //#############################################################
