@@ -312,6 +312,7 @@ function removeDupes(arr, obj){
 }  // end of removeDupes()
 
 
+//Just in case we don't like the answer always being the last pick...
 function shuffleArray(arr){
   for (let i = arr.length; i; i--){
     let j = Math.floor(Math.random() * i);
@@ -321,6 +322,7 @@ function shuffleArray(arr){
 }  // end of shuffleArray()
 
 
+//This little function does a lot of work of this program...
 function fetchRandomCharacter(obj) {
   var keys = [];
   for (key in obj) {
