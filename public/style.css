@@ -308,8 +308,7 @@ h2.intro {
   FORM ELEMENTS
 ----------------------------------------------------------------------------*/
 #start-quiz {
-  margin-top: 20px;
-  margin-bottom: 10px; }
+  margin: 20px 10px 20px 0px; }
 
 .start-quiz-label {
   font-family: 'Exo', sans-serif;
@@ -386,8 +385,8 @@ img {
   Paragraph
 ----------------------------------------------------------------------------*/
 p.questionText {
-  font-size: 30px;
-  margin-bottom: 30px;
+  font-size: 24px;
+  margin-bottom: 24px;
   width: 100%; }
 
 p.intro-text {
@@ -436,6 +435,11 @@ p.intro-text {
       font-size: 22px;
       margin-left: 22px;
       width: 320px; } }
+
+.results {
+  color: yellow;
+  font-size: 10px;
+  margin-bottom: 10px; }
 
 .output {
   margin: 0 auto;
@@ -490,14 +494,14 @@ p.questionText {
 @media only screen and (min-width: 620px) {
   .image-wrap {
     display: inline-block;
-    height: 412px;
+    height: 430px;
     overflow: hidden;
     width: 260px; } }
 
 @media only screen and (min-width: 850px) {
   .image-wrap {
     display: inline-block;
-    height: 436px;
+    height: 454px;
     width: 320px; } }
 
 img {

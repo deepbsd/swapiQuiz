@@ -19,7 +19,7 @@ const state = {
   },
 };
 
-const maxQuestions = 20;
+const maxQuestions = 10;
 
 const rootURL = 'https://www.swapi.co/api/people/';
 
@@ -161,6 +161,7 @@ function renderQuestion(obj, char, choices){
   </div>
   <div class="formsBox">
     <form id="characterQuestion" class="radioButtons" value="radio">
+      <p class="results">Question: ${state.currentQuestion}  right: ${state.scores.right.length} wrong: ${state.scores.wrong.length}</p>
       <p class="questionText">Who is this?</p>
       <ul class="optionPick">
         <li>
@@ -197,9 +198,15 @@ function renderQuestion(obj, char, choices){
     // get the chosen value and score the question...
     var choice = $("input:radio[name='character']:checked").val();
 
-    scoreQuestion(choice, char);
+    if (choice === undefined) {
+      alert('Answer the question you must!');
+    } else {
+      scoreQuestion(choice, char);
+      proceedQuiz();
+    }
 
-    proceedQuiz();
+
+
   });
 }  //end of renderQuestion()
 
@@ -245,6 +252,10 @@ function proceedQuiz(){
   }
   console.log(`Your score is right: ${state.scores.right.length}  wrong: ${state.scores.wrong.length}.`)
 }  // End of proceedQuiz()
+
+function throwModal(){
+  // throw a modal if the user fails to answer the question before proceeding...
+}
 
 //######################  Modify State Object ########################
 //####################################################################
