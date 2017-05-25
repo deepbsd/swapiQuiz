@@ -272,6 +272,9 @@ function proceedQuiz(){
 function openModal(){
   // throw a modal if the user fails to answer the question before proceeding...
   $('.modal').show();
+  var sound = "/sounds/klaxon.mp3";
+  var audio = new Audio(sound);
+  audio.play();
   $('.close').click( function(){
       $('.modal').hide();
     })
