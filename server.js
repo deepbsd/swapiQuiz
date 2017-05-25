@@ -19,6 +19,7 @@ app.use( '/img', express.static(__dirname + '/src/img') );
 app.use( '/js', express.static(__dirname + '/src/js') );
 // needed to add fonts to make them available to front end
 app.use( '/fonts', express.static(__dirname + '/src/fonts/jedi/starjedi') );
+app.use( '/sounds', express.static(__dirname + '/src/sounds') );
 
 //Just to test that the endpoint works...
 app.get('/heartbeat', function(req, res) {

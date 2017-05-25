@@ -103,7 +103,6 @@ function renderIntro(){
   // Load the spinning loader animation
  $(".loader").fadeOut('fast');
 
-
   var introTempl = "<h2 class='intro'>Welcome!</h2> "
   introTempl += "<div class='safety-intro'><p class='intro-text'>The Star Wars Saga is still continuing after 40 years, long after the careers of some of the original actors!  How is it that this story has penetrated generations of human lives and kept informing us of insights into the human condition after all these years?  Remind yourself of some of those unforgettable characters by having fun with this quiz!</p><form id='js-quizz-start-form'><label class='start-quiz-label' for='quizapp-start'></label><input type='hidden' name='start-quiz' id='start-quiz'><button id='start-quiz' type='submit'>Join Rebellion</button></form></div> <!-- end of quiz-intro  -->"
 
@@ -206,8 +205,6 @@ function renderQuestion(obj, char, choices){
       proceedQuiz();
     }
 
-
-
   });
 }  //end of renderQuestion()
 
@@ -235,6 +232,24 @@ function renderFinalPg(){
   });
 
 }  // End of renderFinalPg()
+
+// when the user answers a question right, let him/her know...
+function playGoodSound(){
+  var sounds = ["/sounds/yoda_laugh.wav","/sounds/ewok2.wav","/sounds/ewok1.wav","/sounds/r2d2a.wav", "/sounds/r2d2b.wav", "/sounds/r2d2c.wav", "/sounds/r2d2d.wav"];
+  var filename = `${sounds[Math.floor((Math.random() * sounds.length))]}`;
+  var audio = new Audio(filename);
+  audio.play();
+  console.log('trying to play good sound:', filename);
+}
+
+// when the user misses an answer, let him/her know
+function playBadSound(){
+    var sounds = ["/sounds/jabba_laugh.wav","/sounds/tie_fighter.wav","/sounds/vader3.mp3","/sounds/sidius1.wav", "/sounds/sidius2.wav", "/sounds/vader1.wav", "/sounds/vader2.wav"];
+    var filename = `${sounds[Math.floor((Math.random() * sounds.length))]}`;
+    var audio = new Audio(filename);
+    audio.play();
+    console.log('trying to play bad sound...', filename);
+  }
 
 //######################  Control Program Flow ########################
 //#####################################################################
@@ -268,9 +283,11 @@ function openModal(){
 function scoreQuestion(choice, char){
   var message;
   if (choice === char.name) {
+    playGoodSound();
     message = " You are right!";
     state.scores.right.push(state.currentQuestion);
   } else {
+    playBadSound();
     message = " Sorry, no.  You are mistaken.";
     state.scores.wrong.push(state.currentQuestion);
     state.missedCharacters.push(char.name);
