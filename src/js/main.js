@@ -199,7 +199,8 @@ function renderQuestion(obj, char, choices){
     var choice = $("input:radio[name='character']:checked").val();
 
     if (choice === undefined) {
-      alert('Answer the question you must!');
+      //alert('Answer the question you must!');
+      openModal();
     } else {
       scoreQuestion(choice, char);
       proceedQuiz();
@@ -253,8 +254,12 @@ function proceedQuiz(){
   console.log(`Your score is right: ${state.scores.right.length}  wrong: ${state.scores.wrong.length}.`)
 }  // End of proceedQuiz()
 
-function throwModal(){
+function openModal(){
   // throw a modal if the user fails to answer the question before proceeding...
+  $('.modal').show();
+  $('.close').click( function(){
+      $('.modal').hide();
+    })
 }
 
 //######################  Modify State Object ########################
