@@ -161,7 +161,7 @@ function renderQuestion(obj, char, choices){
   </div>
   <div class="formsBox">
     <form id="characterQuestion" class="radioButtons" value="radio">
-      <p class="results">Question: ${state.currentQuestion}  right: ${state.scores.right.length} wrong: ${state.scores.wrong.length}</p>
+      <p class="results">Question: ${state.currentQuestion} -- right: ${state.scores.right.length} wrong: ${state.scores.wrong.length}</p>
       <p class="questionText">Who is this?</p>
       <ul class="optionPick">
         <li>
