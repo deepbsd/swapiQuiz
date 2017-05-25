@@ -441,7 +441,7 @@ p.intro-text {
   color: yellow;
   font-size: 10px;
   margin-bottom: 10px;
-  margin-top: -12px; }
+  margin-top: -10px; }
 
 .output {
   margin: 0 auto;
@@ -458,30 +458,33 @@ p.intro-text {
       width: 100%; } }
 
 .modal {
+  background-color: black;
+  border-radius: 5px;
+  color: yellow;
   display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
+  height: 30%;
   left: 15%;
+  margin-top: 15%;
+  overflow: auto;
+  opacity: 0.9;
+  padding-top: 10%;
+  position: fixed;
   top: 15%;
   width: 70%;
-  height: 30%;
-  overflow: auto;
-  background-color: black;
-  opacity: 0.9;
-  color: yellow; }
+  z-index: 1; }
 
 .modal-content {
   border-radius: 5px;
   font-family: "Coiny";
   font-size: 20px;
-  margin: auto;
+  margin: 5%;
+  margin-top: -5%;
   padding: 20px;
   border: 1px solid yellow;
   width: 80%; }
 
 .close {
-  color: #aaaaaa;
+  color: yellow;
   margin-top: -28px;
   float: right;
   font-size: 28px;
@@ -489,7 +492,7 @@ p.intro-text {
 
 .close:hover,
 .close:focus {
-  color: red;
+  color: darkred;
   cursor: pointer; }
 
 @media only screen and (min-width: 720px) {
