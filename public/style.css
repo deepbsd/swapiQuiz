@@ -386,6 +386,7 @@ img {
 ----------------------------------------------------------------------------*/
 p.questionText {
   font-size: 24px;
+  margin-top: 12px;
   margin-bottom: 24px;
   width: 100%; }
 
@@ -439,7 +440,8 @@ p.intro-text {
 .results {
   color: yellow;
   font-size: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  margin-top: -12px; }
 
 .output {
   margin: 0 auto;
@@ -480,7 +482,7 @@ p.intro-text {
 
 .close {
   color: #aaaaaa;
-  margin-top: -10px;
+  margin-top: -28px;
   float: right;
   font-size: 28px;
   font-weight: bold; }
