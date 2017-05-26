@@ -160,7 +160,11 @@ function renderQuestion(obj, char, choices){
   </div>
   <div class="formsBox">
     <form id="characterQuestion" class="radioButtons" value="radio">
-      <p class="results">Question: ${state.currentQuestion} -- right: ${state.scores.right.length} wrong: ${state.scores.wrong.length}</p>
+      <div class="results-wrapper cf">
+        <div class="right-answers"> ${state.scores.right.length}</div>
+        <div class="question-number">Q: ${state.currentQuestion}/${maxQuestions}</div>
+        <div class="wrong-answers" > ${state.scores.wrong.length}</div>
+      </div>
       <p class="questionText">Who is this?</p>
       <ul class="optionPick">
         <li>
@@ -236,7 +240,7 @@ function renderFinalPg(){
 // when the user answers a question right, let him/her know...
 function playGoodSound(){
   var sounds = ["/sounds/yoda_laugh.wav","/sounds/ewok2.wav","/sounds/ewok1.wav","/sounds/r2d2a.wav", "/sounds/r2d2b.wav", "/sounds/r2d2c.wav", "/sounds/r2d2d.wav"];
-  var filename = `${sounds[Math.floor((Math.random() * sounds.length))]}`;
+  var filename = sounds[Math.floor((Math.random() * sounds.length))];
   var audio = new Audio(filename);
   audio.play();
   console.log('trying to play good sound:', filename);
@@ -245,7 +249,7 @@ function playGoodSound(){
 // when the user misses an answer, let him/her know
 function playBadSound(){
     var sounds = ["/sounds/jabba_laugh.wav","/sounds/tie_fighter.wav","/sounds/vader3.mp3","/sounds/sidius1.wav", "/sounds/sidius2.wav", "/sounds/vader1.wav", "/sounds/vader2.wav"];
-    var filename = `${sounds[Math.floor((Math.random() * sounds.length))]}`;
+    var filename = sounds[Math.floor((Math.random() * sounds.length))];
     var audio = new Audio(filename);
     audio.play();
     console.log('trying to play bad sound...', filename);
@@ -272,7 +276,7 @@ function proceedQuiz(){
 function openModal(){
   // throw a modal if the user fails to answer the question before proceeding...
   $('.modal').show();
-  var sound = "/sounds/klaxon.mp3";
+  var sound = "/sounds/klaxon-shortest.m4a";
   var audio = new Audio(sound);
   audio.play();
   $('.close').click( function(){

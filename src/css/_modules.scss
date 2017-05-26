@@ -43,6 +43,29 @@
   }
 }
 
+.results-wrapper {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.right-answers {
+  color: green;
+  float: left;
+  width: 33%
+}
+
+.wrong-answers {
+  color: red;
+  float: left;
+  width: 33%;
+}
+
+.question-number {
+  color: yellow;
+  float: left;
+  width: 34%;
+}
+
 .modal {
   background-color: black;
   border-radius: 5px;
@@ -118,7 +141,8 @@
 p.questionText {
   color: yellow;
   font-family: "Trebuchet MS";
-  font-size: 32px;
+  font-size: 26px;
+  float: clear;
 }
 
 .radioButtons {

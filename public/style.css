@@ -457,6 +457,25 @@ p.intro-text {
       max-width: 850px;
       width: 100%; } }
 
+.results-wrapper {
+  font-size: 18px;
+  font-weight: bold; }
+
+.right-answers {
+  color: green;
+  float: left;
+  width: 33%; }
+
+.wrong-answers {
+  color: red;
+  float: left;
+  width: 33%; }
+
+.question-number {
+  color: yellow;
+  float: left;
+  width: 34%; }
+
 .modal {
   background-color: black;
   border-radius: 5px;
@@ -527,7 +546,8 @@ p.intro-text {
 p.questionText {
   color: yellow;
   font-family: "Trebuchet MS";
-  font-size: 32px; }
+  font-size: 26px;
+  float: clear; }
 
 .radioButtons {
   text-align: center; }
@@ -542,7 +562,7 @@ p.questionText {
 @media only screen and (min-width: 850px) {
   .image-wrap {
     display: inline-block;
-    height: 454px;
+    height: 468px;
     width: 320px; } }
 
 img {
