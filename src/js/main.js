@@ -239,7 +239,8 @@ function renderFinalPg(){
 
 // when the user answers a question right, let him/her know...
 function playGoodSound(){
-  var sounds = ["/sounds/yoda_laugh.wav","/sounds/ewok2.wav","/sounds/ewok1.wav","/sounds/r2d2a.wav", "/sounds/r2d2b.wav", "/sounds/r2d2c.wav", "/sounds/r2d2d.wav"];
+  //var sounds = ["/sounds/yoda_laugh.wav","/sounds/ewok2.wav","/sounds/ewok1.wav","/sounds/r2d2a.wav", "/sounds/r2d2b.wav", "/sounds/r2d2c.wav", "/sounds/r2d2d.wav"];
+  var sounds = ["/sounds/yoda_laugh.mp3","/sounds/ewok2.mp3","/sounds/ewok1.mp3","/sounds/r2d2a.mp3", "/sounds/r2d2b.mp3", "/sounds/r2d2c.mp3", "/sounds/r2d2d.mp3"];
   var filename = sounds[Math.floor((Math.random() * sounds.length))];
   var audio = new Audio(filename);
   audio.play();
@@ -248,7 +249,8 @@ function playGoodSound(){
 
 // when the user misses an answer, let him/her know
 function playBadSound(){
-    var sounds = ["/sounds/jabba_laugh.wav","/sounds/tie_fighter.wav","/sounds/vader3.mp3","/sounds/sidius1.wav", "/sounds/sidius2.wav", "/sounds/vader1.wav", "/sounds/vader2.wav"];
+    //var sounds = ["/sounds/jabba_laugh.wav","/sounds/tie_fighter.wav","/sounds/vader3.mp3","/sounds/sidius1.wav", "/sounds/sidius2.wav", "/sounds/vader1.wav", "/sounds/vader2.wav"];
+    var sounds = ["/sounds/jabba_laugh.mp3","/sounds/tie_fighter.mp3","/sounds/vader3.mp3","/sounds/sidius1.mp3", "/sounds/sidius2.mp3", "/sounds/vader1.mp3", "/sounds/vader2.mp3"];
     var filename = sounds[Math.floor((Math.random() * sounds.length))];
     var audio = new Audio(filename);
     audio.play();
